@@ -1,0 +1,15 @@
+:root {
+  font-size: 62.5%;
+}
+body {
+  color: #000;
+  font-size: 1.8rem;
+  font-size: 18px;
+}
+h1 {
+  color: #b0b0b0;
+}
+div {
+  box-sizing: border-box;
+  transform:rotate(7deg);
+}
