@@ -13,10 +13,11 @@ var sass         = require('gulp-sass')
 var sourcemaps   = require('gulp-sourcemaps')
 var autoprefixer = require('gulp-autoprefixer')
 var rename       = require('gulp-rename')
-var cached        = require('gulp-cached')
+var cached       = require('gulp-cached')
 var cleanCSS     = require('gulp-clean-css')
 // var csso = require('gulp-csso')
 var debug        = require('gulp-spy')
+// var plumber = require('gulp-plumber')
 
 if(!config.tasks.css) return
 
@@ -30,11 +31,11 @@ var paths = {
 var lessTask = function () {
   // console.log(paths.lessSrc);
   return gulp.src(paths.lessSrc)
-    .pipe(debug({prefix: 'Debug:'}))
-    .pipe(cached('less'))        // 只传递更改过的文件
+    .pipe(debug()) //.pipe(debug({prefix: 'Debug:'}))
+    .pipe(cached('lessCached'))        // 只传递更改过的文件
     .pipe(gulpif(!global.production, sourcemaps.init()))
     .pipe(less(config.tasks.css.less.compile))
-    .on('error', handleErrors)
+    .on('error', handleErrors) // 交给notify处理错误
     .pipe(autoprefixer(config.tasks.css.autoprefixer))
     .pipe(gulpif(!global.production, sourcemaps.write('./maps')))
     .pipe(gulp.dest(paths.dest))
@@ -47,11 +48,11 @@ var lessTask = function () {
 var sassTask = function () {
   // console.log(paths.sassSrc);
   return gulp.src(paths.sassSrc)
-    .pipe(debug({prefix: 'Debug:'}))
-    .pipe(cached('sass'))        // 只传递更改过的文件
+    .pipe(debug()) //.pipe(debug({prefix: 'Debug:'}))
+    .pipe(cached('sassCached'))        // 只传递更改过的文件
     .pipe(gulpif(!global.production, sourcemaps.init()))
     .pipe(sass(config.tasks.css.sass.compile))
-    .on('error', handleErrors)
+    .on('error', handleErrors) // 交给notify处理错误
     .pipe(autoprefixer(config.tasks.css.autoprefixer))
     .pipe(gulpif(!global.production, sourcemaps.write('./maps')))
     .pipe(gulp.dest(paths.dest))

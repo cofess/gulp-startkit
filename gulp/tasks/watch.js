@@ -1,7 +1,7 @@
 "use strict";
 
-var gulp = require("gulp"),
-    runSequence = require("run-sequence");
+var gulp = require("gulp")
+var runSequence = require("run-sequence")
 
 //监听less文件
 gulp.task('watch:less', function () {

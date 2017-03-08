@@ -5,7 +5,6 @@ var config       = require('../config')
 var path         = require('path')
 var gulp         = require('gulp')
 var cached       = require('gulp-cached')
-var changed      = require('gulp-changed')
 var debug        = require('gulp-spy')
 
 
@@ -19,8 +18,8 @@ var paths = {
 
 var staticTask = function() {
   return gulp.src(paths.src)
-  	.pipe(debug({prefix: 'Debug:'}))
-    .pipe(changed(paths.dest)) // Ignore unchanged files
+  	.pipe(debug()) //.pipe(debug({prefix: 'Debug:'}))
+    .pipe(cached('staticCached')) // Ignore unchanged files
     .pipe(gulp.dest(paths.dest))
 }
 
