@@ -1,7 +1,7 @@
 "use strict";
 
 var config       = require('../config')
-var handleErrors = require('../lib/handleErrors')
+var handleErrors = require('../util/handleErrors')
 
 var path         = require('path')
 var browserSync  = require('browser-sync')
@@ -19,13 +19,13 @@ var cleanCSS     = require('gulp-clean-css')
 var debug        = require('gulp-spy')
 // var plumber = require('gulp-plumber')
 
-if(!config.tasks.css) return
+if(!config.tasks.styles) return
 
 var paths = {
-  src: path.join(config.root.src, config.tasks.css.src, '/**/*.{' + config.tasks.css.extensions + '}'),
-  lessSrc: path.join(config.root.src, config.tasks.css.src, config.tasks.css.less.src, '/**/*.{' + config.tasks.css.less.extensions + '}'),
-  sassSrc: path.join(config.root.src, config.tasks.css.src, config.tasks.css.sass.src, '/**/*.{' + config.tasks.css.sass.extensions + '}'),
-  dest: path.join(config.root.dest, config.tasks.css.dest)
+  src: path.join(config.root.src, config.tasks.styles.src, '/**/*.{' + config.tasks.styles.extensions + '}'),
+  lessSrc: path.join(config.root.src, config.tasks.styles.src, config.tasks.styles.less.src, '/**/*.{' + config.tasks.styles.less.extensions + '}'),
+  sassSrc: path.join(config.root.src, config.tasks.styles.src, config.tasks.styles.sass.src, '/**/*.{' + config.tasks.styles.sass.extensions + '}'),
+  dest: path.join(config.root.dest, config.tasks.styles.dest)
 }
 
 var lessTask = function () {
@@ -34,9 +34,9 @@ var lessTask = function () {
     .pipe(debug()) //.pipe(debug({prefix: 'Debug:'}))
     .pipe(cached('lessCached'))        // 只传递更改过的文件
     .pipe(gulpif(!global.production, sourcemaps.init()))
-    .pipe(less(config.tasks.css.less.compile))
+    .pipe(less(config.tasks.styles.less.compile))
     .on('error', handleErrors) // 交给notify处理错误
-    .pipe(autoprefixer(config.tasks.css.autoprefixer))
+    .pipe(autoprefixer(config.tasks.styles.autoprefixer))
     .pipe(gulpif(!global.production, sourcemaps.write('./maps')))
     .pipe(gulp.dest(paths.dest))
     .pipe(rename({suffix: '.min'}))
@@ -51,9 +51,9 @@ var sassTask = function () {
     .pipe(debug()) //.pipe(debug({prefix: 'Debug:'}))
     .pipe(cached('sassCached'))        // 只传递更改过的文件
     .pipe(gulpif(!global.production, sourcemaps.init()))
-    .pipe(sass(config.tasks.css.sass.compile))
+    .pipe(sass(config.tasks.styles.sass.compile))
     .on('error', handleErrors) // 交给notify处理错误
-    .pipe(autoprefixer(config.tasks.css.autoprefixer))
+    .pipe(autoprefixer(config.tasks.styles.autoprefixer))
     .pipe(gulpif(!global.production, sourcemaps.write('./maps')))
     .pipe(gulp.dest(paths.dest))
     .pipe(rename({suffix: '.min'}))
@@ -62,27 +62,11 @@ var sassTask = function () {
     .pipe(browserSync.stream())
 }
 
-// var cssTask = function () {
-//   return gulp.src(paths.src)
-//     .pipe(debug({prefix: 'Debug:'}))
-//     .pipe(gulpif(!global.production, sourcemaps.init()))
-//     .pipe(sass(config.tasks.css.sass))
-//     .on('error', handleErrors)
-//     .pipe(autoprefixer(config.tasks.css.autoprefixer))
-//     .pipe(gulpif(!global.production, sourcemaps.write('./maps')))
-//     .pipe(gulp.dest(paths.dest))
-//     .pipe(rename({suffix: '.min'}))
-//     .pipe(gulp.dest(paths.dest))
-//     .pipe(gulpif(global.production, cleanCSS({debug: true})))
-//     .pipe(browserSync.stream())
-// }
-// gulp.task('css', cssTask)
-
 gulp.task('less', lessTask)
 
 gulp.task('sass', sassTask)
 
-gulp.task('css',function (callback) {
+gulp.task('styles',function (callback) {
     runSequence(    
         ['less', 'sass'], 
         callback

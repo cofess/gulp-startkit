@@ -1,7 +1,7 @@
 "use strict";
 
 var config       = require('../config')
-var handleErrors = require('../lib/handleErrors')
+var handleErrors = require('../util/handleErrors')
 
 var path         = require('path')
 var browserSync  = require('browser-sync')

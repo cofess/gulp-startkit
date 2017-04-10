@@ -1,7 +1,7 @@
 "use strict";
 
 var config       = require('../config')
-var handleErrors = require('../lib/handleErrors')
+var handleErrors = require('../util/handleErrors')
 
 var fs           = require('fs')
 var path         = require('path')

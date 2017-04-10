@@ -1,5 +1,5 @@
 "use strict";
-var getEnabledTasks = require('../lib/getEnabledTasks')
+var getEnabledTasks = require('../util/getEnabledTasks')
 
 var runSequence     = require('run-sequence')
 var gulp            = require('gulp')
@@ -9,7 +9,7 @@ var gulp            = require('gulp')
 //   runSequence('clean', tasks.assetTasks, tasks.codeTasks, 'static', 'watch', cb)
 // }
 
-gulp.task("build", ["concat-js", "image-min", "copy-assets", "minify-html"]);
+gulp.task("build", ["static", "font", "image", "styles", "script", "html"]);
 
 gulp.task("default", function(done) {
     process.env.GSD_PUBLISHED = "true";

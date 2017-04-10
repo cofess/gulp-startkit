@@ -18,7 +18,13 @@ var paths = {
 
 var fontsTask = function() {
   return gulp.src([paths.src, '*!README.md'])
-  	.pipe(debug()) //.pipe(debug({prefix: 'Debug:'}))
+  	.pipe(debug({
+  		// timestamp: false,
+  		// 'zero-format': 'No files matched',
+  		// 'one-format': 'Total: ' + chalk.cyan('1 file'),
+  		// 'many-format': 'Total: ' + chalk.cyan('%s files')
+  		// format: '>' + chalk.yellow('%s')
+  	})) //.pipe(debug({prefix: 'Debug:'}))
     .pipe(cached('fontsCached')) // Ignore unchanged files
     .pipe(gulp.dest(paths.dest))
     .pipe(browserSync.stream())

@@ -1,7 +1,7 @@
 "use strict";
 
 var config            = require('../config')
-var pathToUrl         = require('../lib/pathToUrl')
+var pathToUrl         = require('../util/pathToUrl')
 
 var browserSync       = require('browser-sync')
 var gulp              = require('gulp')

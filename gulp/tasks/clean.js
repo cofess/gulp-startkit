@@ -11,15 +11,15 @@ var cached      = require('gulp-cached')
 
 
 // 清除文件,css/js/images/fonts
-gulp.task('clean',function (callback) {
-    runSequence(    
-        ['clean:css', 'clean:js', 'clean:image', 'clean:font', 'clean:cache'], 
-        callback
-    );
-});    
+// gulp.task('clean',function (callback) {
+//     runSequence(    
+//         ['clean:css', 'clean:js', 'clean:image', 'clean:font', 'clean:cache'], 
+//         callback
+//     );
+// });    
 
 // 清除文件,删除dist目录下的所有文件
-gulp.task('clean:all',function (callback) {
+gulp.task('clean',function (callback) {
     del([path.join(config.root.dest, '/**'), path.join('!', config.root.dest)]).then(paths => {
     	if(paths.length){
     		console.log("---------------------------- clean:all ----------------------------\n");
@@ -68,7 +68,7 @@ gulp.task('clean:js',function (callback) {
 
 // 清除image文件,删除dist/images目录下的所有图片文件
 gulp.task('clean:image',function (callback) {
-    del([path.join(config.root.dest, config.tasks.images.dest, '/**')]).then(paths => {
+    del([path.join(config.root.dest, config.tasks.image.dest, '/**')]).then(paths => {
     	if(paths.length){
     		console.log("---------------------------- clean:img ----------------------------\n");
             console.log(" • 共删除"+paths.length+"个文件");
@@ -84,7 +84,7 @@ gulp.task('clean:image',function (callback) {
 
 // 清除字体文件
 gulp.task('clean:font',function (callback) {
-    del([path.join(config.root.dest, config.tasks.fonts.dest, '/**')]).then(paths => {
+    del([path.join(config.root.dest, config.tasks.font.dest, '/**')]).then(paths => {
         if(paths.length){
             console.log("---------------------------- clean:font ---------------------------\n");
             console.log(" • 共删除"+paths.length+"个文件");

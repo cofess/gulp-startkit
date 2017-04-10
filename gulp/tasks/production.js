@@ -1,7 +1,7 @@
 "use strict";
 
 var config          = require('../config')
-var getEnabledTasks = require('../lib/getEnabledTasks')
+var getEnabledTasks = require('../util/getEnabledTasks')
 
 var runSequence     = require('run-sequence')
 var gulp            = require('gulp')

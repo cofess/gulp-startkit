@@ -17,7 +17,7 @@
       "dest": "./"
     },
 
-    "js": {
+    "script": {
       "src": "js",
       "dest": "assets/js",
       "entries": {
@@ -30,8 +30,8 @@
       },
       "extractSharedJs": false
     },
-    "css": {
-      "src": "stylesheets",
+    "styles": {
+      "src": "styles",
       "dest": "assets/css",
       "autoprefixer": {
         "browsers": ["last 3 versions"],
