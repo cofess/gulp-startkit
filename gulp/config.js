@@ -7,6 +7,12 @@ var development       = 'build/development';
 var production        = 'build/production';
 var developmentAssets = 'build/assets';
 var productionAssets  = 'build/production/assets';
+var stylesheet        = {
+      // type: 'less',
+      // extensions: ["less" ,"css"],
+      type: 'sass',
+      extensions: ["sass", "scss", "css"],
+    }
 
 // gulp 任务配置
 module.exports = {
@@ -78,9 +84,11 @@ module.exports = {
   },
   // styles样式表
   styles: {
+    type: stylesheet.type,
+    extensions: stylesheet.extensions,
     src:  [
-      srcAssets + '/styles/*.scss',
-      '!' + srcAssets + '/styles/_*.scss',
+      srcAssets + '/styles/*.{' + stylesheet.extensions + '}',
+      '!' + srcAssets + '/styles/_*.{' + stylesheet.extensions + '}',
     ],
     dest: developmentAssets + '/css',
     sourcemap: false, //是否生成sourcemap
@@ -90,20 +98,6 @@ module.exports = {
         './node_modules/normalize.css'
       ]
     },
-    // less: {
-    //   src: "less",
-    //   extensions: ["less" ,"css"],
-    //   compile: {
-    //     compress: true
-    //   }
-    // },
-    // sass: {
-    //   src: "sass",
-    //   extensions: ["sass", "scss", "css"],
-    //   compile: {
-    //     indentedSyntax: true
-    //   }
-    // },
     options: {
       precss: {},
       clean: {
