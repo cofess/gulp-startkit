@@ -2,7 +2,7 @@ var src               = 'app'; // 源代码目录
 var static            = 'app/_static';
 var srcAssets         = 'app/_assets';
 var build             = 'build'; // 构建目录
-var concatFolder      = srcAssets + '/javascripts/_concat';
+var concatFolder      = srcAssets + '/scripts/_concat';
 var development       = 'build/development';
 var production        = 'build/production';
 var developmentAssets = 'build/assets';
@@ -161,9 +161,9 @@ module.exports = {
   // scripts脚本
   js: {
     src: [
-      srcAssets + '/javascripts/**/*.js',
-      '!' + srcAssets + '/javascripts/_*/**',
-      '!' + srcAssets + '/javascripts/**/_*.js',
+      srcAssets + '/scripts/**/*.js',
+      '!' + srcAssets + '/scripts/_*/**',
+      '!' + srcAssets + '/scripts/**/_*.js',
     ],
     dest: developmentAssets + '/js/',
     sourcemap: true, //是否生成sourcemap
@@ -183,8 +183,8 @@ module.exports = {
   // scripts脚本校验
   jshint: {
     src: [
-      srcAssets + '/javascripts/*.js',
-      '!' + srcAssets + '/javascripts/*.min.js',
+      srcAssets + '/scripts/*.js',
+      '!' + srcAssets + '/scripts/*.min.js',
     ]
   },
   images: {
@@ -340,7 +340,7 @@ module.exports = {
     static:  static + '/**/*',
     fonts:   srcAssets + '/fonts/**/*',
     styles:  srcAssets + '/styles/**/*.{css,scss,less}',
-    scripts: srcAssets + '/javascripts/**/*.js',
+    scripts: srcAssets + '/scripts/**/*.js',
     images:  srcAssets + '/images/**/*',
     sprites: srcAssets + '/images/**/*.png',
     // svg:     'vectors/*.svg'
