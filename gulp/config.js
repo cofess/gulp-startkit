@@ -1,16 +1,16 @@
-var src               = 'app'; //源代码目录
+var src               = 'app'; // 源代码目录
 var static            = 'app/_static';
-var build             = 'build'; //构建目录
+var srcAssets         = 'app/_assets';
+var build             = 'build'; // 构建目录
+var concatFolder      = srcAssets + '/javascripts/_concat';
 var development       = 'build/development';
 var production        = 'build/production';
-var srcAssets         = 'app/_assets';
-var concatFolder      = srcAssets + '/javascripts/_concat';
 var developmentAssets = 'build/assets';
 var productionAssets  = 'build/production/assets';
 
-//gulp 任务配置
+// gulp 任务配置
 module.exports = {
-  //本地服务器
+  // 本地服务器
   browsersync: {
     development: {
       server: {
@@ -31,7 +31,7 @@ module.exports = {
       port: 9998
     }
   },
-  //是否开启调试
+  // 是否开启调试
   debug: {
     state: true,
     options: {
@@ -43,10 +43,11 @@ module.exports = {
       // format: '>' + chalk.yellow('%s')
     }
   },
-  //清空构建目录
+  // 清空构建目录
   delete: {
     src: [developmentAssets]
   },
+  // 文件占用空间
   sizereport: {
     src:  [
       developmentAssets + '/css/*.css',
@@ -59,10 +60,12 @@ module.exports = {
       },
     }
   },
+  // 通用资源目录，例如：favicion
   static: {
     src: static,
     dest: build
   },
+  // 字体
   fonts: {
     development: {
       src:  srcAssets + '/fonts/*',
@@ -73,6 +76,7 @@ module.exports = {
       dest: productionAssets + '/fonts'
     }
   },
+  // styles样式表
   styles: {
     src:  [
       srcAssets + '/styles/*.scss',
@@ -130,6 +134,7 @@ module.exports = {
       mqpacker: {}
     }
   },
+  // styles样式表校验
   csslint: {
     src: [
       developmentAssets + '/css/*css',
@@ -153,6 +158,7 @@ module.exports = {
       }
     }
   },
+  // scripts脚本
   js: {
     src: [
       srcAssets + '/javascripts/**/*.js',
@@ -174,7 +180,7 @@ module.exports = {
       }
     }
   },
-  //JS代码校验
+  // scripts脚本校验
   jshint: {
     src: [
       srcAssets + '/javascripts/*.js',
@@ -200,6 +206,7 @@ module.exports = {
       debug: false
     }
   },
+  // css sprite图片精灵
   sprites: {
     src: srcAssets + '/images/sprites',
     // src: srcAssets + '/images/sprites/icon/*.png',
@@ -237,6 +244,7 @@ module.exports = {
     extensions: ["html", "json"],
     excludeFolders: ["_layouts", "_includes", "_macros", "_bower_components", "_data"]
   },
+  // 打包
   gzip: {
     // src: production + '/**/*.{html,xml,json,css,js}',
     src: [
@@ -250,6 +258,7 @@ module.exports = {
       extension: 'zip'
     }
   },
+  // 压缩优化
   optimize: {
     css: {
       src:  developmentAssets + '/css/*.css',
@@ -280,6 +289,7 @@ module.exports = {
       }
     }
   },
+  // 加版本号
   rev: {
     src: {
       assets: [
@@ -305,6 +315,7 @@ module.exports = {
     ],
     dest: production
   },
+  // 监听文件
   watch: {
     // jekyll: [
     //   '_config.yml',
