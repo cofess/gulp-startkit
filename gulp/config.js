@@ -85,18 +85,32 @@ module.exports = {
   // styles样式表
   styles: {
     type: stylesheet.type,
-    extensions: stylesheet.extensions,
     src:  [
       srcAssets + '/styles/*.{' + stylesheet.extensions + '}',
       '!' + srcAssets + '/styles/_*.{' + stylesheet.extensions + '}',
     ],
     dest: developmentAssets + '/css',
     sourcemap: false, //是否生成sourcemap
-    compile: {
-      indentedSyntax: true,
-      includePaths: [
-        './node_modules/normalize.css'
-      ]
+    less: {
+      extensions: ["less" ,"css"],
+      compile: {
+        compress: true
+      }
+    },
+    sass: {
+      extensions: ["sass", "scss", "css"],
+      compile: {
+        outputStyle: 'compressed'
+      }
+    },
+    postcss: {
+      extensions: ["css"],
+      compile: {
+        indentedSyntax: true,
+        includePaths: [
+          './node_modules/normalize.css'
+        ]
+      }
     },
     options: {
       precss: {},

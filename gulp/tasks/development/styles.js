@@ -1,4 +1,5 @@
 var gulp         = require('gulp')
+var less         = require('gulp-less')
 var sass         = require('gulp-sass')
 var minify       = require('gulp-clean-css')
 var plumber      = require('gulp-plumber')
@@ -24,7 +25,9 @@ gulp.task('styles', function() {
       errorHandler: onError
     }))
     .pipe(gulpif(config.sourcemap,sourcemap.init()))
-    .pipe(sass(config.compile))
+    // .pipe(sass(config.compile))
+    .pipe(gulpif(config.type == 'less',less(config.less.compile)))
+    .pipe(gulpif(config.type == 'sass',sass(config.sass.compile)))
     .pipe(autoprefixer(config.options.autoprefixer))
     .pipe(minify(config.options.clean))
     .pipe(gcmq())
