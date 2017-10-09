@@ -1,0 +1,81 @@
+body {
+  position: relative;
+  font-family: $font-family-default;
+  overflow-x: hidden;
+  &.auto-scroll {
+    overflow-y: auto;
+    padding-right: 0!important;
+    &.modal-open {
+      @media (max-width: $screen-xs-max) {
+        overflow: hidden;
+      }
+    }
+  }
+  @media (max-width: $screen-xs-max) {
+    padding-top: 53px;
+  }
+}
+
+a {
+  color: $link-dark-color;
+  text-decoration: none;
+  &:focus,
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+  &.active {
+    color: $link-hover-color;
+  }
+}
+
+.active {
+  > a {
+    color: $link-hover-color;
+  }
+}
+
+input,
+button,
+select,
+textarea,
+.btn {
+  outline: none!important;
+  &:focus,
+  &:hover,
+  &:active {
+    outline: none!important;
+  }
+}
+
+
+/*------------------ Fluidity response ------------------------------*/
+
+img,
+canvas,
+iframe,
+video,
+svg {
+  max-width: 100%;
+  height: auto
+}
+
+// img {
+//   position: relative;
+// }
+
+// img:before {
+//   position: absolute;
+//   content: "回";
+//   // content: "We're sorry, the image below is broken :(";
+//   display: block;
+//   width: 100%;
+//   text-align: center;
+//   color: #ccc;
+// }
+
+// img:after {
+//   content: "(url: " attr(src) ")";
+//   display: block;
+//   font-size: 12px
+// }

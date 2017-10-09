@@ -1,1 +1,1 @@
-# gulp-startkit
+# hexo-pure-theme

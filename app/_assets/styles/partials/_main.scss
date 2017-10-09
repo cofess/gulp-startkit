@@ -1,0 +1,139 @@
+/*
+ * Main content
+ */
+
+.bar {
+  // position: absolute;
+  // right: 0;
+  // left: 0;
+  // z-index: 10;
+  // padding-right: .5rem;
+  // padding-left: .5rem;
+  // border-bottom: 1px solid #e7e7e7;
+  // -webkit-backface-visibility: hidden;
+  // backface-visibility: hidden;
+  &.bar-footer {
+    position: relative;
+    background-color: #fff;
+    bottom: -20px;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 120%;
+      height: 52px;
+      left: -10%;
+      border-top: 1px solid #f6f6f6;
+      border-bottom: 1px solid #fff;
+      background-color: #fff;
+      @media (max-width: $screen-xs-max) {
+        width: calc(100% + 30px);
+        left: -15px;
+      }
+    }
+  }
+  .bar-inner{
+    position:relative;
+    z-index:9;
+    @include clearfix;
+  }
+  .bar-right {
+    margin: 10px 0;
+    float: right;
+  }
+}
+
+.main {
+  .pager {
+    text-align: left;
+    margin: 10px 0;
+    .disabled {
+      cursor: not-allowed;
+    }
+    > a,
+    > .page-number {
+      line-height: 32px;
+      float: left;
+    }
+    a {
+      color: #666;
+      border: 0;
+      line-height: 32px;
+      padding: 0;
+      &:link,
+      &:visited {
+        background-color: transparent;
+      }
+      &:hover {
+        color: $link-hover-color;
+        background-color: transparent;
+      }
+    }
+    .prev {
+      margin-right: 10px;
+    }
+    .page-number {
+      &.current {
+        color: $link-color;
+      }
+      + .page-number {
+        margin-left: 10px;
+      }
+    }
+    .page-number {
+      + .next {
+        margin-left: 10px;
+      }
+    }
+  }
+  .total-article {
+    margin: 10px 0;
+    line-height: 32px;
+    color: $text-light-color;
+  }
+  .page-header {
+    margin-top: 0;
+  }
+  .article-list {
+    article {
+      border-bottom: 1px solid $border-color;
+      &:hover {}
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+  .article-meta {
+    font-size: 13px;
+    color: $text-light-color;
+    a {
+      color: $text-light-color;
+      &:hover {
+        color: $link-hover-color;
+        text-decoration: none;
+      }
+    }
+    span {
+      + span {
+        margin-left: 10px;
+      }
+    }
+  }
+  .content {
+    min-height: 85vh;
+    @media (max-width: $screen-xs-max) {
+      min-height: auto;
+    }
+  }
+  &.has-sticky {
+    .content {
+      margin-bottom: 70px;
+    }
+  }
+}
+
+#comments {
+  .gitment-footer-container,
+  .gitment-footer-project-link {
+    display: none!important;
+  }
+}

@@ -1,0 +1,88 @@
+.widget {
+  @include clearfix;
+  .widget-title {
+    font-size: 18px;
+    color: #000;
+  }
+  time {
+    color: $text-light-color;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .category-link {
+    color: $link-hover-color;
+  }
+  // a {
+  //   color: $link-dark-color;
+  //   text-decoration: none;
+  //   &:hover {
+  //     color: $link-hover-color;
+  //   }
+  // }
+  // + .widget{
+  //   margin-top:10px;
+  // }
+}
+
+.category-list-count,
+.tag-list-count,
+.archive-list-count {
+  padding-left: 5px;
+  color: $text-light-color;
+  font-size: 0.85em;
+}
+
+.category-list-count:before,
+.tag-list-count:before,
+.archive-list-count:before {
+  content: "(";
+}
+
+.category-list-count:after,
+.tag-list-count:after,
+.archive-list-count:after {
+  content: ")";
+}
+
+.category-list,
+.archive-list,
+.tag-list {
+  line-height: 1.75;
+  li:before {
+    color: #ccc;
+    content: "▪";
+    font-size: 12px;
+    margin-right: 6px;
+    -webkit-transition: 0.2s ease;
+    -moz-transition: 0.2s ease;
+    -ms-transition: 0.2s ease;
+    transition: 0.2s ease;
+  }
+}
+
+.recent-post-list{
+  li{
+    + li{
+      margin-top:10px;
+    }
+  }
+}
+
+
+// 文章目录
+.sidebar-toc {
+  &.collapse {
+    display: none!important;
+  }
+  &.in {
+    display: block!important;
+  }
+}
