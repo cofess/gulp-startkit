@@ -51,7 +51,7 @@ module.exports = {
   },
   // 清空构建目录
   delete: {
-    src: [developmentAssets]
+    src: [developmentAssets,productionAssets]
   },
   // 文件占用空间
   sizereport: {
@@ -244,6 +244,14 @@ module.exports = {
   html: {
     src: src,
     dest: build,
+    development: {
+      src:    src,
+      dest:   development
+    },
+    production: {
+      src:    src,
+      dest:   production
+    },
     dataFile: "_data/global.json",
     compile: {
       collapseWhitespace: true

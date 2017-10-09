@@ -1,5 +1,5 @@
 {
-  "name": "gulp-startkit",
+  "name": "Gulp StartKit",
   "version": "0.0.1",
   "description": "The build process of my website with Gulp.js",
   "private": true,

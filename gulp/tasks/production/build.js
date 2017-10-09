@@ -30,9 +30,10 @@ var runSequence    = require('run-sequence')
 // });
 
 gulp.task('build:production', function(callback) {
-  runSequence('delete', [
+  runSequence('delete', 'html:production', [
       'styles',
       'js',
+      'jsconcat',
       'images',
       'copy:fonts'
     ],
