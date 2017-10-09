@@ -146,7 +146,6 @@ module.exports = {
   csslint: {
     src: [
       developmentAssets + '/css/*css',
-      '!' + developmentAssets + '/css/bootstrap.css',
       '!' + developmentAssets + '/css/*.min.css',
     ],
     options: {
