@@ -279,7 +279,7 @@ module.exports = {
       collapseWhitespace: true
     },
     extensions: ["html", "json"],
-    excludeFolders: ["_layouts", "_includes", "_macros", "_bower_components", "_data"]
+    excludeFolders: ["_layouts", "_includes", "_macros", "_bower_components", "_data","_static"]
   },
   // 打包
   gzip: {
