@@ -12,9 +12,9 @@ gulp.task('build', function(callback) {
       'js',
       'jsconcat',
       'images',
-      'manifest',
       'html'
     ],
+    'manifest',
     'base64',
     callback);
 });
