@@ -27,6 +27,7 @@ var htmlTask = function() {
     .pipe(data(getData))
     .pipe(render({
       path: config.src,
+      // inheritExtension: true, // true,不更改文件后缀，默认为false，统一将文件后缀改为'.html'
       envOptions: {
         watch: false
       }

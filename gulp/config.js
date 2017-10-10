@@ -66,6 +66,28 @@ module.exports = {
       },
     }
   },
+  // Html5 Cache Manifest离线缓存,不是PWA manifest.json，注意区别
+  // Cache Manifest部署 <html manifest="demo.appcache">
+  // PWA manifest.json介绍 https://lavas.baidu.com/mip/doc/engage-retain-users/add-to-home-screen/introduction
+  // PWA部署 <link rel="manifest" href="path-to-manifest/manifest.json">
+  manifest: {
+    src: [
+      build + '/**/*',
+      '!' + build + '/**/*.{zip,gz}',
+      '!' + build + '/**/README.md',
+    ],
+    base: './',
+    options: {
+      timestamp: true,
+      hash: true,
+      preferOnline: true,
+      network: ['*'],
+      filename: 'app.manifest',
+      exclude: 'app.manifest',
+      fallback: '/html5/ /404.html', // 如果无法建立因特网连接，则用 "404.html" 替代 /html5/ 目录中的所有文件
+      revision: 'v1.0.0'
+    }
+  },
   // 通用资源目录，例如：favicion
   static: {
     src: static,
@@ -264,6 +286,7 @@ module.exports = {
     // src: production + '/**/*.{html,xml,json,css,js}',
     src: [
       production + '/**/*',
+      '!' + productionAssets + '/*.json',
       '!' + production + '/**/*.{zip,gz}',
       '!' + production + '/**/README.md',
     ],

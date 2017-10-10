@@ -12,6 +12,7 @@ gulp.task('build', function(callback) {
       'js',
       'jsconcat',
       'images',
+      'manifest',
       'html'
     ],
     'base64',
