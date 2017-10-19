@@ -199,6 +199,7 @@ module.exports = {
     concat: {
       folder: concatFolder,
       excludeFolders: [
+        'debug-modules',
         'bootstrap'
       ],
       dest: developmentAssets + '/js/',
