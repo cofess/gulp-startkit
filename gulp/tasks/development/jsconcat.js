@@ -19,7 +19,7 @@ gulp.task('jsconcat', folders({
   //With folder.pathTarget gets the relative path beginning from options.pathFolder 
   return gulp.src([
       folder.path + "/**/*.js",
-      "!" + folder.path + "/_*/*.js",
+      "!" + folder.path + "/_*/**",
       "!" + folder.path + "/**/_*.js"
     ])
     .pipe(gulpif(config.sourcemap,sourcemap.init()))
