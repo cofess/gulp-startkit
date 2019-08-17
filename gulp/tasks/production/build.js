@@ -30,24 +30,24 @@ var runSequence    = require('run-sequence')
 // });
 
 gulp.task('build:production', function(callback) {
-  runSequence('delete', 'html:production', [
+  runSequence('delete', 'html:production', gulp.series(
       'styles',
       'js',
       'jsconcat',
       'images',
       'copy:fonts'
-    ],
-    'base64', [
+    ),
+    'base64', gulp.series(
       'optimize:css',
       'optimize:js',
       'optimize:images',
       'optimize:html',
       'copy:fonts:production'
-    ],
+    ),
     'rev',
-    'rev:collect', [
+    'rev:collect', gulp.series(
       // 'webp', //有点小问题，依赖系统WIC图像处理组件
       'gzip'
-    ],
+    ),
     callback);
 });
