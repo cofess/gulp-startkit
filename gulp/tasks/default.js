@@ -1,3 +1,7 @@
-var gulp = require('gulp');
+const gulp = require('gulp');
 
-gulp.task('default', gulp.series('watch'));
+const defaultTask = () => {
+  return gulp.task('default', gulp.series('watch'));
+}
+
+exports.default = defaultTask;

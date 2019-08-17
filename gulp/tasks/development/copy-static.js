@@ -1,11 +1,11 @@
 "use strict";
 
-var path           = require('path')
-var gulp           = require('gulp')
-var changed        = require('gulp-changed')
-var config         = require('../../config').static
+const path = require('path');
+const gulp = require('gulp');
+const changed = require('gulp-changed');
+const config = require('../../config').static;
 
-if (!config) return
+if (!config) return;
 
 var paths = {
   src: [
@@ -15,11 +15,10 @@ var paths = {
   dest: config.dest
 }
 
-var staticTask = function() {
+const copystaticTask = () => {
   return gulp.src(paths.src)
     .pipe(changed(paths.dest)) // Ignore unchanged files
     .pipe(gulp.dest(paths.dest))
 }
 
-gulp.task('copy:static', staticTask)
-module.exports = staticTask
+exports.copystatic = copystaticTask;
