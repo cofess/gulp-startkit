@@ -17,5 +17,5 @@ const watchTask = () => {
 }
 
 // gulp.task('watch', gulp.series('browsersync', watchTask))
-gulp.task('watch', watchTask)
-module.exports = watchTask
+// gulp.task('watch', watchTask)
+// module.exports = watchTask
