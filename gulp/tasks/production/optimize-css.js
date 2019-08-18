@@ -1,14 +1,18 @@
-var gulp          = require('gulp')
-var size          = require('gulp-size')
-var config        = require('../../config').optimize.css
+const gulp = require('gulp');
+const size = require('gulp-size');
+const config = require('../../config').optimize.css;
 
-if (!config) return
+if (!config) return;
 
 /**
  * Copy CSS files
  */
-gulp.task('optimize:css', function() {
-  return gulp.src(config.src)
-    .pipe(gulp.dest(config.dest))
-    .pipe(size());
-});
+const optimizecssTask = () => {
+  return gulp.task('optimize:css', function() {
+    return gulp.src(config.src)
+      .pipe(gulp.dest(config.dest))
+      .pipe(size());
+  });
+}
+
+exports.optimizecss = optimizecssTask;

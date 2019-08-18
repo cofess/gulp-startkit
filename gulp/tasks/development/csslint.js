@@ -1,10 +1,12 @@
-var gulp           = require('gulp')
-var stylelint      = require('gulp-stylelint')
-var config         = require('../../config').csslint
+const gulp = require('gulp');
+const stylelint = require('gulp-stylelint');
+const config = require('../../config').csslint;
 
-if (!config) return
+if (!config) return;
 
-gulp.task('csslint', function() {
+const csslintTask = () => {
   return gulp.src(config.src)
     .pipe(stylelint(config.options.reporter));
-});
+}
+
+exports.csslint = csslintTask;

@@ -1,18 +1,22 @@
-var gulp          = require('gulp')
-var tar           = require('gulp-tar')
-var gzip          = require('gulp-gzip')
-var size          = require('gulp-size')
-var config        = require('../../config').gzip
+const gulp = require('gulp');
+const tar = require('gulp-tar');
+const gzip = require('gulp-gzip');
+const size = require('gulp-size');
+const config = require('../../config').gzip;
 
-if (!config) return
+if (!config) return;
 
 /**
  * Gzip text files
  */
-gulp.task('gzip', function() {
-  return gulp.src(config.src)
-    .pipe(tar(config.filename))
-    .pipe(gzip(config.options))
-    .pipe(gulp.dest(config.dest))
-    .pipe(size());
-});
+const gzipTask = () => {
+  return gulp.task('gzip', function() {
+    return gulp.src(config.src)
+      .pipe(tar(config.filename))
+      .pipe(gzip(config.options))
+      .pipe(gulp.dest(config.dest))
+      .pipe(size());
+  });
+}
+
+exports.gzip = gzipTask;

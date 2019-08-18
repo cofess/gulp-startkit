@@ -16,12 +16,10 @@ if (!config) return;
 // });
 
 const copyfontsTask = () => {
-  return gulp.task('copy:fonts', function() {
-    return gulp.src(config.src)
-      .pipe(gulpif(debug.state, logger(debug.options)))
-      .pipe(changed(config.dest)) // Ignore unchanged files
-      .pipe(gulp.dest(config.dest));
-  });
+  return gulp.src(config.src)
+    .pipe(gulpif(debug.state, logger(debug.options)))
+    .pipe(changed(config.dest)) // Ignore unchanged files
+    .pipe(gulp.dest(config.dest));
 }
 
 exports.copyfonts = copyfontsTask;

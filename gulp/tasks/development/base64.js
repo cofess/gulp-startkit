@@ -10,13 +10,12 @@ if (!config) return;
 /**
  * Replace urls in CSS fies with base64 encoded data
  */
-const publishTask = () => {
-  return gulp.task('base64', gulp.series('styles'), function() {
-    return gulp.src(config.src)
-      .pipe(gulpif(debug.state, logger(debug.options)))
-      .pipe(base64(config.options))
-      .pipe(gulp.dest(config.dest));
-  });
+const base64Task = () => {
+  return gulp.src(config.src)
+    .pipe(gulpif(debug.state, logger(debug.options)))
+    .pipe(base64(config.options))
+    .pipe(gulp.dest(config.dest));
+
 }
 
-exports.publish = publishTask;
+exports.base64 = gulp.series('styles', base64Task);
