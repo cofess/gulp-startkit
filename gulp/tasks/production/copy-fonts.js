@@ -8,11 +8,9 @@ if (!config) return;
  * Copy fonts to folder
  */
 const copyfontsproductionTask = () => {
-  return gulp.task('copy:fonts:production', function() {
-    return gulp.src(config.src)
-      .pipe(changed(config.dest)) // Ignore unchanged files
-      .pipe(gulp.dest(config.dest));
-  });
+  return gulp.src(config.src)
+    .pipe(changed(config.dest)) // Ignore unchanged files
+    .pipe(gulp.dest(config.dest));
 }
 
 exports.copyfontsproduction = copyfontsproductionTask;

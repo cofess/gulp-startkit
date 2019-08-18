@@ -10,13 +10,11 @@ if (!config) return;
  * Gzip text files
  */
 const gzipTask = () => {
-  return gulp.task('gzip', function() {
-    return gulp.src(config.src)
-      .pipe(tar(config.filename))
-      .pipe(gzip(config.options))
-      .pipe(gulp.dest(config.dest))
-      .pipe(size());
-  });
+  return gulp.src(config.src)
+    .pipe(tar(config.filename))
+    .pipe(gzip(config.options))
+    .pipe(gulp.dest(config.dest))
+    .pipe(size());
 }
 
 exports.gzip = gzipTask;

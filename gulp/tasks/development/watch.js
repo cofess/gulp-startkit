@@ -5,7 +5,7 @@ const config = require('../../config').watch;
  * Start browsersync task and then watch files for changes
  */
 const watchTask = () => {
-  return gulp.task('watch', gulp.series('browsersync'), function() {
+  return gulp.task('watch', gulp.series('browsersync', function() {
     // gulp.watch(config.jekyll,  ['jekyll-rebuild']);
     gulp.watch(config.styles, gulp.series('styles', 'csslint', 'cssmin'));
     gulp.watch(config.scripts, gulp.series('js', 'jshint', 'jsmin'));
@@ -15,7 +15,7 @@ const watchTask = () => {
     gulp.watch(config.static, gulp.series('copy:static'));
     gulp.watch(config.sprites, gulp.series('sprites'));
     gulp.watch(config.html, gulp.series('html'));
-  });
+  }));
 }
 
 exports.watch = watchTask;
