@@ -61,7 +61,6 @@
     "jshint-stylish": "^2.2.1",
     "merge-stream": "^2.0.0",
     "pretty-hrtime": "^1.0.3",
-    "run-sequence": "^2.2.1",
     "stylelint": "^10.1.0"
   },
   "dependencies": {
