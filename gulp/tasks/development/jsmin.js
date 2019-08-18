@@ -19,4 +19,5 @@ const jsminTask = () => {
     .pipe(size());
 }
 
-exports.jsmin = jsminTask;
+gulp.task('jsmin', jsminTask)
+module.exports = jsminTask

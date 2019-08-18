@@ -1,8 +1,8 @@
-const gulp = require('gulp');
-const changed = require('gulp-changed');
-const config = require('../../config').fonts.production;
+const gulp = require('gulp')
+const changed = require('gulp-changed')
+const config = require('../../config').fonts.production
 
-if (!config) return;
+if (!config) return
 
 /**
  * Copy fonts to folder
@@ -13,4 +13,5 @@ const copyfontsproductionTask = () => {
     .pipe(gulp.dest(config.dest));
 }
 
-exports.copyfontsproduction = copyfontsproductionTask;
+gulp.task('copy:fonts:production', copyfontsproductionTask)
+module.exports = copyfontsproductionTask

@@ -1,17 +1,17 @@
-const gulp = require('gulp');
-const less = require('gulp-less');
-const sass = require('gulp-sass');
-const minify = require('gulp-clean-css');
-const plumber = require('gulp-plumber');
-const sourcemap = require('gulp-sourcemaps');
-const gutil = require('gulp-util');
-const browsersync = require('browser-sync');
-const autoprefixer = require('gulp-autoprefixer');
-const gulpif = require('gulp-if');
-const gcmq = require('gulp-group-css-media-queries');
-const config = require('../../config').styles;
+const gulp = require('gulp')
+const less = require('gulp-less')
+const sass = require('gulp-sass')
+const minify = require('gulp-clean-css')
+const plumber = require('gulp-plumber')
+const sourcemap = require('gulp-sourcemaps')
+const gutil = require('gulp-util')
+const browsersync = require('browser-sync')
+const autoprefixer = require('gulp-autoprefixer')
+const gulpif = require('gulp-if')
+const gcmq = require('gulp-group-css-media-queries')
+const config = require('../../config').styles
 
-if (!config) return;
+if (!config) return
 
 function onError(err) {
   gutil.beep();
@@ -35,4 +35,5 @@ const stylesTask = () => {
     .pipe(gulp.dest(config.dest));
 }
 
-exports.styles = stylesTask;
+gulp.task('styles', stylesTask)
+module.exports = stylesTask

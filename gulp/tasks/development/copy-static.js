@@ -1,9 +1,9 @@
-const path = require('path');
-const gulp = require('gulp');
-const changed = require('gulp-changed');
-const config = require('../../config').static;
+const path = require('path')
+const gulp = require('gulp')
+const changed = require('gulp-changed')
+const config = require('../../config').static
 
-if (!config) return;
+if (!config) return
 
 var paths = {
   src: [
@@ -13,10 +13,11 @@ var paths = {
   dest: config.dest
 }
 
-const copystaticTask = () => {
+var staticTask = function() {
   return gulp.src(paths.src)
     .pipe(changed(paths.dest)) // Ignore unchanged files
     .pipe(gulp.dest(paths.dest))
 }
 
-exports.copystatic = copystaticTask;
+gulp.task('copy:static', staticTask)
+module.exports = staticTask

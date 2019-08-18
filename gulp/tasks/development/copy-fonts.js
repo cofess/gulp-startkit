@@ -1,15 +1,19 @@
-const gulp = require('gulp');
-const changed = require('gulp-changed');
-const logger = require('gulp-spy');
-const gulpif = require('gulp-if');
-const debug = require('../../config').debug;
-const config = require('../../config').fonts.development;
+const gulp = require('gulp')
+const changed = require('gulp-changed')
+const logger = require('gulp-spy')
+const gulpif = require('gulp-if')
+const debug = require('../../config').debug
+const config = require('../../config').fonts.development
 
-if (!config) return;
+if (!config) return
 
 /**
  * Copy fonts to folder
  */
+// gulp.task('copy:fonts', ['fontcustom'], function() {
+//   return gulp.src(config.src)
+//     .pipe(gulp.dest(config.dest));
+// });
 const copyfontsTask = () => {
   return gulp.src(config.src)
     .pipe(gulpif(debug.state, logger(debug.options)))
@@ -17,4 +21,5 @@ const copyfontsTask = () => {
     .pipe(gulp.dest(config.dest));
 }
 
-exports.copyfonts = copyfontsTask;
+gulp.task('copy:fonts', copyfontsTask)
+module.exports = copyfontsTask

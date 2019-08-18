@@ -1,16 +1,16 @@
-const path = require('path');
-const gulp = require('gulp');
-const minify = require('gulp-clean-css');
-const plumber = require('gulp-plumber');
-// const sourcemap      = require('gulp-sourcemaps');
-const gutil = require('gulp-util');
-const browsersync = require('browser-sync');
-// const autoprefixer   = require('autoprefixer');
-const size = require('gulp-size');
-const rename = require('gulp-rename');
-const config = require('../../config').styles;
+const path = require('path')
+const gulp = require('gulp')
+const minify = require('gulp-clean-css')
+const plumber = require('gulp-plumber')
+  // const sourcemap      = require('gulp-sourcemaps')
+const gutil = require('gulp-util')
+const browsersync = require('browser-sync')
+  // const autoprefixer   = require('autoprefixer')
+const size = require('gulp-size')
+const rename = require('gulp-rename')
+const config = require('../../config').styles
 
-if (!config) return;
+if (!config) return
 
 function onError(err) {
   gutil.beep();
@@ -20,6 +20,7 @@ function onError(err) {
 
 const cssminTask = () => {
   browsersync.notify('Transforming CSS with CSS Minify');
+
   return gulp.src([path.join(config.dest, '/*.css'), '!' + config.dest + '/*.min.css'])
     .pipe(plumber({
       errorHandler: onError
@@ -29,7 +30,8 @@ const cssminTask = () => {
     // .pipe(sourcemap.write('.'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(config.dest))
-    .pipe(size());
+    .pipe(size())
 }
 
-exports.cssmin = cssminTask;
+gulp.task('cssmin', cssminTask)
+module.exports = cssminTask

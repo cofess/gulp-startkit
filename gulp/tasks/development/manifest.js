@@ -11,4 +11,5 @@ const manifestTask = () => {
     .pipe(gulp.dest('build'));
 }
 
-exports.manifest = manifestTask;
+gulp.task('manifest', manifestTask)
+module.exports = manifestTask

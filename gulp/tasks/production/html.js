@@ -1,16 +1,16 @@
 "use strict";
 
-const fs = require('fs');
-const path = require('path');
-const browserSync = require('browser-sync');
-const gulp = require('gulp');
-const data = require('gulp-data');
-const render = require('gulp-nunjucks-render');
-const config = require('../../config').html;
+var fs             = require('fs')
+var path           = require('path')
+var browserSync    = require('browser-sync')
+var gulp           = require('gulp')
+var data           = require('gulp-data')
+var render         = require('gulp-nunjucks-render')
+var config         = require('../../config').html
 
-if (!config) return;
+if (!config) return
 
-var exclude = path.normalize('!**/{' + config.excludeFolders.join(',') + '}/**');
+var exclude = path.normalize('!**/{' + config.excludeFolders.join(',') + '}/**')
 
 var paths = {
   src: [path.join(config.src, '/**/*.{' + config.extensions + '}'), exclude],
@@ -22,7 +22,7 @@ var getData = function(file) {
   return JSON.parse(fs.readFileSync(dataPath, 'utf8'))
 }
 
-const htmlproductionTask = () => {
+var htmlProductionTask = function() {
   return gulp.src(paths.src)
     .pipe(data(getData))
     .pipe(render({
@@ -35,4 +35,5 @@ const htmlproductionTask = () => {
     .on('end', browserSync.reload)
 }
 
-exports.htmlproduction = htmlproductionTask;
+gulp.task('html:production', htmlProductionTask)
+module.exports = htmlProductionTask

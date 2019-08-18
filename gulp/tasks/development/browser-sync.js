@@ -1,14 +1,14 @@
-const gulp = require('gulp');
-const browsersync = require('browser-sync');
-const config = require('../../config').browsersync.development;
+const gulp = require('gulp')
+const browsersync = require('browser-sync')
+const config = require('../../config').browsersync.development
 
 /**
  * Run the build task and start a server with BrowserSync
  */
 const browsersyncTask = () => {
-  return gulp.task('browsersync', gulp.series('build', function() {
-    browsersync(config);
-  }));
+  browsersync(config);
 }
 
-exports.browsersync = browsersyncTask;
+// gulp.task('browsersync', gulp.series('build', browsersyncTask))
+gulp.task('browsersync', browsersyncTask)
+module.exports = browsersyncTask

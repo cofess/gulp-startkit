@@ -1,10 +1,10 @@
-const fs             = require('fs')
-const path           = require('path')
-const browserSync    = require('browser-sync')
-const gulp           = require('gulp')
-const data           = require('gulp-data')
-const render         = require('gulp-nunjucks-render')
-const config         = require('../../config').html
+const fs = require('fs')
+const path = require('path')
+const browserSync = require('browser-sync')
+const gulp = require('gulp')
+const data = require('gulp-data')
+const render = require('gulp-nunjucks-render')
+const config = require('../../config').html
 
 if (!config) return
 

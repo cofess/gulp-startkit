@@ -20,4 +20,5 @@ const jsTask = () => {
     .pipe(gulp.dest(config.dest));
 }
 
-exports.js = jsTask;
+gulp.task('js', jsTask)
+module.exports = jsTask

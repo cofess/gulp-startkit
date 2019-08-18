@@ -1,10 +1,10 @@
-const gulp = require('gulp');
-const tar = require('gulp-tar');
-const gzip = require('gulp-gzip');
-const size = require('gulp-size');
-const config = require('../../config').gzip;
+const gulp = require('gulp')
+const tar = require('gulp-tar')
+const gzip = require('gulp-gzip')
+const size = require('gulp-size')
+const config = require('../../config').gzip
 
-if (!config) return;
+if (!config) return
 
 /**
  * Gzip text files
@@ -17,4 +17,5 @@ const gzipTask = () => {
     .pipe(size());
 }
 
-exports.gzip = gzipTask;
+gulp.task('gzip', gzipTask)
+module.exports = gzipTask

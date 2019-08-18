@@ -14,4 +14,5 @@ const jshintTask = () => {
     .pipe(jshint.reporter(stylish, { beep: true }));
 }
 
-exports.jshint = jshintTask;
+gulp.task('jshint', jshintTask)
+module.exports = jshintTask

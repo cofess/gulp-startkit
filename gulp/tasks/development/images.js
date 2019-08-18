@@ -14,4 +14,5 @@ const imagesTask = () => {
     .pipe(gulp.dest(config.dest));
 }
 
-exports.images = imagesTask;
+gulp.task('images', imagesTask)
+module.exports = imagesTask
