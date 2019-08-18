@@ -1,12 +1,14 @@
-var gulp           = require('gulp');
-var del            = require('del');
-var config         = require('../../config').delete;
+const gulp = require('gulp');
+const del = require('del');
+const config = require('../../config').delete;
 
-if (!config) return
+if (!config) return;
 
 /**
  * Delete folders and files
  */
-gulp.task('delete', function(callback) {
-  del(config.src, callback);
-});
+const deleteTask = (callback) => {
+  return del(config.src, callback);
+}
+
+exports.delete = deleteTask;

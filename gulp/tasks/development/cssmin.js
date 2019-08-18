@@ -18,11 +18,8 @@ function onError(err) {
   this.emit('end');
 }
 
-function cssmin_notify() {
-  browsersync.notify('Transforming CSS with CSS Minify');
-}
-
 const cssminTask = () => {
+  browsersync.notify('Transforming CSS with CSS Minify');
   return gulp.src([path.join(config.dest, '/*.css'), '!' + config.dest + '/*.min.css'])
     .pipe(plumber({
       errorHandler: onError
@@ -35,4 +32,4 @@ const cssminTask = () => {
     .pipe(size());
 }
 
-exports.cssmin = series(cssmin_notify, cssminTask);
+exports.cssmin = cssminTask;

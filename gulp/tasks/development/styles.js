@@ -20,21 +20,19 @@ function onError(err) {
 }
 
 const stylesTask = () => {
-  return gulp.task('styles', function() {
-    return gulp.src(config.src)
-      .pipe(plumber({
-        errorHandler: onError
-      }))
-      .pipe(gulpif(config.sourcemap, sourcemap.init()))
-      // .pipe(sass(config.compile))
-      .pipe(gulpif(config.type == 'less', less(config.less.compile)))
-      .pipe(gulpif(config.type == 'sass', sass(config.sass.compile)))
-      .pipe(autoprefixer(config.options.autoprefixer))
-      .pipe(minify(config.options.clean))
-      .pipe(gcmq())
-      .pipe(gulpif(config.sourcemap, sourcemap.write('.')))
-      .pipe(gulp.dest(config.dest));
-  });
+  return gulp.src(config.src)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(gulpif(config.sourcemap, sourcemap.init()))
+    // .pipe(sass(config.compile))
+    .pipe(gulpif(config.type == 'less', less(config.less.compile)))
+    .pipe(gulpif(config.type == 'sass', sass(config.sass.compile)))
+    .pipe(autoprefixer(config.options.autoprefixer))
+    .pipe(minify(config.options.clean))
+    .pipe(gcmq())
+    .pipe(gulpif(config.sourcemap, sourcemap.write('.')))
+    .pipe(gulp.dest(config.dest));
 }
 
 exports.styles = stylesTask;
