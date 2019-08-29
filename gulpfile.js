@@ -34,4 +34,22 @@ const watchTask = () => {
 
 gulp.task('watch', gulp.series('browsersync', watchTask));
 
-gulp.task('default', gulp.series('watch'));
+/*************************************************************************
+ * build task
+ * Run all tasks needed for a build in defined order
+ *************************************************************************/
+const buildTask = (done) => {
+  return gulp.series(
+    'delete',
+    gulp.parallel('copy:static', 'copy:fonts', 'styles', 'js', 'jsconcat', 'images', 'html'),
+    gulp.parallel('cssmin', 'jsmin'),
+    'base64'
+  )(done);
+};
+
+gulp.task('build', gulp.series('watch', buildTask))
+
+/*************************************************************************
+ * default task
+ *************************************************************************/
+gulp.task('default', gulp.series('build'));
