@@ -8,7 +8,7 @@ if (!config) return
  * Delete folders and files
  */
 const deleteTask = (callback) => {
-  del(config.src, callback);
+  return del(config.src, callback);
 }
 
 gulp.task('delete', deleteTask)
