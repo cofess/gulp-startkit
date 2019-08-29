@@ -356,7 +356,7 @@ module.exports = {
   },
   collect: {
     src: [
-      productionAssets + '/manifest.json',
+      productionAssets + '/rev.manifest.json',
       production + '/**/*.{html,xml,txt,json,css,js}',
       '!' + production + '/feed.xml'
     ],
