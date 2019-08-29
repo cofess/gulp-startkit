@@ -16,9 +16,10 @@ var hub = new HubRegistry([
 /* tell gulp to use the tasks just loaded */
 gulp.registry(hub);
 
-/**
+/*************************************************************************
+ * watch task
  * Start browsersync task and then watch files for changes
- */
+ *************************************************************************/
 const watchTask = () => {
   // gulp.watch(config.jekyll,  gulp.series('jekyll-rebuild'));
   gulp.watch(config.styles, gulp.series('styles', 'csslint', 'cssmin'));
