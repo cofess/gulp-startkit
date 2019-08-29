@@ -107,7 +107,7 @@ module.exports = {
       dest: developmentAssets + '/fonts'
     },
     production: {
-      src:  developmentAssets + '/fonts/*',
+      src:  srcAssets + '/fonts/*',
       dest: productionAssets + '/fonts'
     }
   },

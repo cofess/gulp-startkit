@@ -26,8 +26,8 @@ const watchTask = () => {
   gulp.watch(config.scripts, gulp.series('js', 'jshint', 'jsmin'));
   // gulp.watch(config.scripts, gulp.series('js', 'jsconcat', 'jshint', 'jsmin'));
   gulp.watch(config.images, gulp.series('images'));
-  gulp.watch(config.fonts, gulp.series('copy:fonts'));
-  gulp.watch(config.static, gulp.series('copy:static'));
+  gulp.watch(config.fonts, gulp.series('fonts'));
+  gulp.watch(config.static, gulp.series('static'));
   gulp.watch(config.sprites, gulp.series('sprites'));
   gulp.watch(config.html, gulp.series('html'));
 }
@@ -41,7 +41,7 @@ gulp.task('watch', gulp.series('browsersync', watchTask));
 const buildTask = (done) => {
   return gulp.series(
     'delete',
-    gulp.parallel('copy:static', 'copy:fonts', 'styles', 'js', 'jsconcat', 'images', 'html'),
+    gulp.parallel('static', 'fonts', 'styles', 'js', 'jsconcat', 'images', 'html'),
     gulp.parallel('cssmin', 'jsmin'),
     'base64'
   )(done);
@@ -57,9 +57,9 @@ const buildproductionTask = (done) => {
   gulp.series(
     'delete',
     'html:pro',
-    gulp.parallel('styles', 'js', 'jsconcat', 'images', 'copy:fonts'),
+    gulp.parallel('styles', 'js', 'jsconcat', 'images'),
     'base64',
-    gulp.parallel('optimize:css', 'optimize:js', 'optimize:images', 'optimize:html', 'copy:fonts:pro'),
+    gulp.parallel('optimize:css', 'optimize:js', 'optimize:images', 'optimize:html', 'fonts:pro'),
     'rev',
     'rev:collect',
     // 'webp', //有点小问题，依赖系统WIC图像处理组件

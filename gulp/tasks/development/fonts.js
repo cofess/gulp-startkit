@@ -10,7 +10,7 @@ if (!config) return
 /**
  * Copy fonts to folder
  */
-// gulp.task('copy:fonts', ['fontcustom'], function() {
+// gulp.task('fonts', ['fontcustom'], function() {
 //   return gulp.src(config.src)
 //     .pipe(gulp.dest(config.dest));
 // });
@@ -21,5 +21,5 @@ const copyfontsTask = () => {
     .pipe(gulp.dest(config.dest));
 }
 
-gulp.task('copy:fonts', copyfontsTask)
+gulp.task('fonts', copyfontsTask)
 module.exports = copyfontsTask

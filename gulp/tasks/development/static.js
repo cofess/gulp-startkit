@@ -11,5 +11,5 @@ var staticTask = function() {
     .pipe(gulp.dest(config.dest))
 }
 
-gulp.task('copy:static', staticTask)
+gulp.task('static', staticTask)
 module.exports = staticTask
