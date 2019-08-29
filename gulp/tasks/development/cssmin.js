@@ -21,7 +21,7 @@ function onError(err) {
 const cssminTask = () => {
   browsersync.notify('Transforming CSS with CSS Minify');
 
-  return gulp.src([path.join(config.dest, '/*.css'), '!' + config.dest + '/*.min.css'])
+  return gulp.src([config.dest + '/*.css', '!' + config.dest + '/*.min.css'])
     .pipe(plumber({
       errorHandler: onError
     }))

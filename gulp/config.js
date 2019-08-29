@@ -1,12 +1,12 @@
-var src               = 'app'; // 源代码目录
-var static            = 'app/_static';
-var srcAssets         = 'app/_assets';
-var build             = 'build'; // 构建目录
+var src               = './app'; // 源代码目录
+var build             = './build'; // 构建目录
+var static            = src + '/_static';
+var srcAssets         = src + '/_assets';
 var concatFolder      = srcAssets + '/scripts/_concat';
-var development       = 'build/development';
-var production        = 'build/production';
-var developmentAssets = 'build/assets';
-var productionAssets  = 'build/production/assets';
+var development       = build + '/development';
+var production        = build + '/production';
+var developmentAssets = build + '/assets';
+var productionAssets  = build + '/production/assets';
 var sourcemaps        = {
       css: true,
       js: false
@@ -94,7 +94,10 @@ module.exports = {
   },
   // 通用资源目录，例如：favicion
   static: {
-    src: static,
+    src: [
+      static + '/**/*',
+      '!' + static + '/**/README.md',
+    ],
     dest: build
   },
   // 字体
@@ -154,7 +157,7 @@ module.exports = {
         // format: 'keep-breaks' // formats output the default way but adds line breaks for improved readability
       },
       autoprefixer: {
-        browsers: [
+        overrideBrowserslist: [
           'last 2 versions',
           'safari 5',
           'ie 8',
@@ -186,9 +189,9 @@ module.exports = {
           }]
         }
       },
-      reporter: {
-        clearMessages: true
-      }
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
     }
   },
   // scripts脚本
