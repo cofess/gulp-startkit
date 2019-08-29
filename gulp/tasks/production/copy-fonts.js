@@ -13,5 +13,5 @@ const copyfontsproductionTask = () => {
     .pipe(gulp.dest(config.dest));
 }
 
-gulp.task('copy:fonts:production', copyfontsproductionTask)
+gulp.task('copy:fonts:pro', copyfontsproductionTask)
 module.exports = copyfontsproductionTask

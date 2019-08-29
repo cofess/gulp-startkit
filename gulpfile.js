@@ -47,9 +47,29 @@ const buildTask = (done) => {
   )(done);
 };
 
-gulp.task('build', gulp.series('watch', buildTask))
+gulp.task('build', buildTask);
+
+/*************************************************************************
+ * build task
+ * Run all tasks needed for a build in defined order
+ *************************************************************************/
+const buildproductionTask = (done) => {
+  gulp.series(
+    'delete',
+    'html:pro',
+    gulp.parallel('styles', 'js', 'jsconcat', 'images', 'copy:fonts'),
+    'base64',
+    gulp.parallel('optimize:css', 'optimize:js', 'optimize:images', 'optimize:html', 'copy:fonts:pro'),
+    'rev',
+    'rev:collect',
+    // 'webp', //有点小问题，依赖系统WIC图像处理组件
+    'gzip'
+  )(done);
+};
+
+gulp.task('build:pro', buildproductionTask);
 
 /*************************************************************************
  * default task
  *************************************************************************/
-gulp.task('default', gulp.series('build'));
+gulp.task('default', gulp.series('build', 'watch'));
