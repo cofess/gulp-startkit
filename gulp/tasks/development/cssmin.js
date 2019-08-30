@@ -1,4 +1,3 @@
-const path = require('path')
 const gulp = require('gulp')
 const minify = require('gulp-clean-css')
 const plumber = require('gulp-plumber')

@@ -1,4 +1,3 @@
-const path = require('path')
 const gulp = require('gulp')
 const sourcemap = require('gulp-sourcemaps')
 const browsersync = require('browser-sync')

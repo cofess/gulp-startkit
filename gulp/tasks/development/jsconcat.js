@@ -1,4 +1,3 @@
-const path = require('path')
 const folders = require('gulp-recursive-folder')
 const gulp = require('gulp')
 const concat = require('gulp-concat')

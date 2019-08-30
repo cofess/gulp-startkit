@@ -1,4 +1,3 @@
-const path = require('path')
 const gulp = require('gulp')
 const uglify = require('gulp-uglify')
 const size = require('gulp-size')

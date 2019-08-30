@@ -27,7 +27,7 @@ const watchTask = () => {
   gulp.watch(config.images, gulp.series('images'));
   gulp.watch(config.fonts, gulp.series('fonts'));
   gulp.watch(config.static, gulp.series('static'));
-  gulp.watch(config.sprites, gulp.series('sprites'));
+  // gulp.watch(config.sprites, gulp.series('sprites'));
   gulp.watch(config.html, gulp.series('html'));
 }
 

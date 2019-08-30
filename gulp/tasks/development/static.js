@@ -1,4 +1,3 @@
-const path = require('path')
 const gulp = require('gulp')
 const changed = require('gulp-changed')
 const config = require('../../config').static
