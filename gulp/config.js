@@ -381,7 +381,7 @@ module.exports = {
       src + '/_data/**/*.{json,yml,csv}',
       src + '/_includes/**/*.{html,xml}',
       src + '/_layouts/*.html',
-      src + '/**/*.{html,markdown,md,yml,json,txt,xml}',
+      src + '/**/*.{htm,html,markdown,md,yml,json,txt,xml}',
       src + '/*'
     ],
     static:  static + '/**/*',
