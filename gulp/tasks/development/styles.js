@@ -1,3 +1,7 @@
+/*************************************************************************
+ * combile stylesheet
+ * https://stackoverflow.com/questions/24658011/can-you-remove-a-folder-structure-when-copying-files-in-gulp
+ *************************************************************************/
 const gulp = require('gulp')
 const less = require('gulp-less')
 const sass = require('gulp-sass')
@@ -9,6 +13,7 @@ const browsersync = require('browser-sync')
 const autoprefixer = require('gulp-autoprefixer')
 const gulpif = require('gulp-if')
 const gcmq = require('gulp-group-css-media-queries')
+const rename = require('gulp-rename')
 const config = require('../../config').styles
 
 if (!config) return
@@ -20,7 +25,7 @@ function onError(err) {
 }
 
 const stylesTask = () => {
-  return gulp.src(config.src)
+  return gulp.src(config.src, { base: './app/_assets/styles/**' })
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -32,6 +37,7 @@ const stylesTask = () => {
     .pipe(minify(config.options.clean))
     .pipe(gcmq())
     .pipe(gulpif(config.sourcemap, sourcemap.write('.')))
+    .pipe(rename({ dirname: '' }))
     .pipe(gulp.dest(config.dest));
 }
 
