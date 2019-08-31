@@ -40,6 +40,7 @@
     "gulp-nunjucks-render": "^2.1.0",
     "gulp-plumber": "^1.0.1",
     "gulp-recursive-folder": "^0.9.4",
+    "gulp-rename": "^1.4.0",
     "gulp-rev": "^2.0.1",
     "gulp-rev-collector": "^0.1.1",
     "gulp-rev-napkin": "^0.1.0",
