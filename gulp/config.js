@@ -1,7 +1,7 @@
 var src = 'app'; // 源代码目录
-var static = 'app/_static';
-var srcAssets = 'app/_assets';
 var build = 'build'; // 构建目录
+var static = src + '/_static';
+var srcAssets = src + '/_assets';
 var concatFolder = srcAssets + '/scripts/_concat';
 var development = 'build/development';
 var production = 'build/production';
