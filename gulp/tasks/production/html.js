@@ -12,18 +12,13 @@ if (!config) return
 
 var exclude = path.normalize('!**/{' + config.excludeFolders.join(',') + '}/**')
 
-var paths = {
-  src: [path.join(config.src, '/**/*.{' + config.extensions + '}'), exclude],
-  dest: config.production.dest
-}
-
 var getData = function(file) {
   var dataPath = path.resolve(config.src, config.dataFile)
   return JSON.parse(fs.readFileSync(dataPath, 'utf8'))
 }
 
 var htmlProductionTask = function() {
-  return gulp.src(paths.src)
+  return gulp.src([config.src + '/**/*.{' + config.extensions + '}', exclude])
     .pipe(data(getData))
     .pipe(render({
       path: config.src,
@@ -31,7 +26,7 @@ var htmlProductionTask = function() {
         watch: false
       }
     }))
-    .pipe(gulp.dest(paths.dest))
+    .pipe(gulp.dest(config.production.dest))
     .on('end', browserSync.reload)
 }
 

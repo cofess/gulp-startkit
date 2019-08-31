@@ -1,4 +1,3 @@
-var path           = require('path')
 var gulp           = require('gulp')
 var uglify         = require('gulp-uglify')
 var size           = require('gulp-size')
@@ -12,7 +11,7 @@ if (!config) return
  * Copy and minimize JS files
  */
 gulp.task('jsmin', function() {
-  return gulp.src([path.join(config.dest,'/*.js'),'!'+config.dest+'/*.min.js'])
+  return gulp.src([config.dest + '/*.js', '!' + config.dest + '/*.min.js'])
     .pipe(uglify(config.options.uglify))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(config.dest))

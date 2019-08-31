@@ -1,4 +1,3 @@
-var path           = require('path')
 var gulp           = require('gulp')
 var sourcemap      = require('gulp-sourcemaps')
 var browsersync    = require('browser-sync')
