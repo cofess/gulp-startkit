@@ -9,6 +9,7 @@ var browsersync  = require('browser-sync')
 var autoprefixer = require('gulp-autoprefixer')
 var gulpif       = require('gulp-if')
 var gcmq         = require('gulp-group-css-media-queries')
+var rename       = require('gulp-rename')
 var config       = require('../../config').styles
 
 if (!config) return
@@ -32,5 +33,6 @@ gulp.task('styles', function() {
     .pipe(minify(config.options.clean))
     .pipe(gcmq())
     .pipe(gulpif(config.sourcemap,sourcemap.write('.')))
+    .pipe(rename({ dirname: '' }))
     .pipe(gulp.dest(config.dest));
 });
