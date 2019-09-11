@@ -25,7 +25,7 @@ gulp.task('icon', function() {
         fontName: 'iconfont', // iconfont.css的font-family值
         path: `${dirname}/icons/iconfont.template.scss`, //css模版文件
         targetPath: `../../styles/iconfont/${cssName}.scss`, //css生成文件
-        fontPath: 'fonts/' //iconfont.template.less文件中的fontPath
+        fontPath: '../fonts/' //iconfont.template.less文件中的fontPath
       })
     )
     .pipe(

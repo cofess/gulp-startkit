@@ -1,24 +1,25 @@
 @font-face {
     font-family: "<%= fontName %>";
-    src: url('<%= fontPath %><%= fontName %>.eot');
-    src: url('<%= fontPath %><%= fontName %>.eot?#iefix') format('eot'),
+    src: url('<%= fontPath %><%= fontName %>.eot'); /* IE9*/
+    src: url('<%= fontPath %><%= fontName %>.eot?#iefix') format('eot'), /* IE6-IE8 */
         url('<%= fontPath %><%= fontName %>.woff') format('woff'),
-        url('<%= fontPath %><%= fontName %>.ttf') format('truetype'),
-        url('<%= fontPath %><%= fontName %>.svg#<%= fontName %>') format('svg');
+        url('<%= fontPath %><%= fontName %>.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url('<%= fontPath %><%= fontName %>.svg#<%= fontName %>') format('svg'); /* iOS 4.1- */
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 .icon:before {
     font-family: "<%= fontName %>";
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
     font-style: normal;
     font-variant: normal;
     font-weight: normal;
     /* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
     text-decoration: none;
     text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 <% _.each(glyphs, function(glyph) { %>
