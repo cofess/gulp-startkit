@@ -119,6 +119,7 @@ module.exports = {
       '!' + srcAssets + '/styles/**/_*.{' + stylesheet.extensions + '}',
     ],
     dest: developmentAssets + '/css',
+    purgecss: developmentAssets + '/purgecss', //删除未使用的选择器
     sourcemap: sourcemaps.css, //是否生成sourcemap
     less: {
       extensions: ["less", "css"],

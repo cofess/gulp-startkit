@@ -41,6 +41,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-nunjucks-render": "^2.1.0",
     "gulp-plumber": "^1.0.1",
+    "gulp-purgecss": "^3.0.0",
     "gulp-recursive-folder": "^0.9.4",
     "gulp-rename": "^1.4.0",
     "gulp-rev": "^2.0.1",
